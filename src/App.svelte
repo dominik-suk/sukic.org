@@ -1,4 +1,7 @@
 <script>
+	import Button from './Button.svelte'
+	
+
 	function handleAnchorClick (event) {
 		event.preventDefault()
 		const link = event.currentTarget
@@ -9,9 +12,6 @@
 			behavior: "smooth"
 		})
 	}
-	function darkmode() {
-		alert("Work in progress!")
-	}
 	let test = []
 	for(let i = 1; i < 11; i++) {
 		test.push(i)
@@ -19,14 +19,11 @@
 </script>
 
 <main>
-	<ul style="position:unset;">
-		<li><img href="../App.svelte" src="images/logo.png" alt="DSukic logo" width="115"></li>
-		<li style="padding-left: 84%;padding-bottom:85px;"><div class="img">
-			<img src="images/button.png" alt="Darkmode">
-			<img src="images/button_hover.png" class="hover_img" alt="Darkmode" on:click={darkmode} on:keyup={darkmode}>
-		</div></li>
+	<ul style="position:unset;padding-top:1%;">
+		<li><img id="logo" href="../App.svelte" src="images/logo.png" alt="DSukic logo" width="115"></li>
+		<li style="padding-left: 84%;padding-bottom:2%;"><Button>Darkmode</Button></li>
 	</ul>
-	<ul>
+	<ul class="navbar">
 		<li id="anchor-Home"><a href="#anchor-Home" on:click={handleAnchorClick}>Home</a></li>
 		<li><a href="#anchor-Design" on:click={handleAnchorClick}>Design</a></li>
 		<li><a href="#anchor-Projects" on:click={handleAnchorClick}>Projects</a></li>
@@ -45,27 +42,32 @@
 </main>
 
 <style>
-	.img {
-		cursor: pointer;
-		position: absolute;
-		float: right;
+	:global(body) {
+		background-color: white;
+		color: #161616;
+		transition: background-color 0.3s
 	}
-	.img:hover .hover_img{
-		display: inline;
+	:global(body) ul {
+		background-color: white;
+		color: #161616;
+		transition: background-color 0.3s
 	}
-	.hover_img {
-		position: absolute;
-		top: 0;
-		left: 0;
-		display: none;
-		
+	:global(body.dark-mode) {
+		background-color: #1d3040;
+		color: white;
 	}
+	:global(body.dark-mode) a {
+            color: white;
+    }
+	:global(body.dark-mode) ul {
+			background-color: #1d3040;
+            color: white;
+			border-bottom: 1px solid white;
+    }
 
 	li {
 		float: left;
-		background-color: white;
 	}
-
 	ul {
 		position: sticky;
 		top: 0;
@@ -76,38 +78,31 @@
 		overflow: hidden;
 		border-bottom: 1px solid #161616;
 	}
-
 	a {
+		color: #161616;
 		display: block;
 		padding: 20px;
 	}
-
 	li a {
 		display: block;
-		color: #161616;
 		text-align: center;
 		padding: 14px, 16px;
 		text-decoration: none;
 	}
-
 	li a:hover {
 		color:#04AA6D;
+		transition: 0.15s;
 	}
-	
 	main {
-		/* text-align: center; */
 		padding: 2em;
 		max-width: 240px;
 		margin: 0 auto;
 	}
-
 	h1 {
-		color: #161616;
 		font-size: 4em;
 		font-weight: 100;
 
 	}
-
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
