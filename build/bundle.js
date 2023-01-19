@@ -668,7 +668,7 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "TEST";
     			attr_dev(h1, "class", "svelte-fju7e8");
-    			add_location(h1, file, 31, 2, 951);
+    			add_location(h1, file, 31, 2, 982);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -699,7 +699,7 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "TEST";
     			attr_dev(h1, "class", "svelte-fju7e8");
-    			add_location(h1, file, 35, 2, 1031);
+    			add_location(h1, file, 35, 2, 1066);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -730,7 +730,7 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "TEST";
     			attr_dev(h1, "class", "svelte-fju7e8");
-    			add_location(h1, file, 39, 2, 1115);
+    			add_location(h1, file, 39, 2, 1154);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -865,43 +865,43 @@ var app = (function () {
     			if (!src_url_equal(img.src, img_src_value = "images/logo.png")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "DSukic logo");
     			attr_dev(img, "width", "115");
-    			add_location(img, file, 22, 6, 474);
+    			add_location(img, file, 22, 6, 496);
     			attr_dev(li0, "class", "svelte-fju7e8");
-    			add_location(li0, file, 22, 2, 470);
+    			add_location(li0, file, 22, 2, 492);
     			set_style(li1, "padding-left", "84%");
     			set_style(li1, "padding-bottom", "2%");
     			attr_dev(li1, "class", "svelte-fju7e8");
-    			add_location(li1, file, 23, 2, 570);
+    			add_location(li1, file, 23, 2, 593);
     			set_style(ul0, "position", "unset");
     			set_style(ul0, "padding-top", "1%");
     			attr_dev(ul0, "class", "svelte-fju7e8");
-    			add_location(ul0, file, 21, 1, 424);
+    			add_location(ul0, file, 21, 1, 445);
     			attr_dev(a0, "href", "#anchor-Home");
     			attr_dev(a0, "class", "svelte-fju7e8");
-    			add_location(a0, file, 26, 23, 701);
+    			add_location(a0, file, 26, 23, 727);
     			attr_dev(li2, "id", "anchor-Home");
     			attr_dev(li2, "class", "svelte-fju7e8");
-    			add_location(li2, file, 26, 2, 680);
+    			add_location(li2, file, 26, 2, 706);
     			attr_dev(a1, "href", "#anchor-Design");
     			attr_dev(a1, "class", "svelte-fju7e8");
-    			add_location(a1, file, 27, 6, 773);
+    			add_location(a1, file, 27, 6, 800);
     			attr_dev(li3, "class", "svelte-fju7e8");
-    			add_location(li3, file, 27, 2, 769);
+    			add_location(li3, file, 27, 2, 796);
     			attr_dev(a2, "href", "#anchor-Projects");
     			attr_dev(a2, "class", "svelte-fju7e8");
-    			add_location(a2, file, 28, 6, 849);
+    			add_location(a2, file, 28, 6, 877);
     			attr_dev(li4, "class", "svelte-fju7e8");
-    			add_location(li4, file, 28, 2, 845);
+    			add_location(li4, file, 28, 2, 873);
     			attr_dev(ul1, "class", "navbar svelte-fju7e8");
-    			add_location(ul1, file, 25, 1, 658);
+    			add_location(ul1, file, 25, 1, 683);
     			attr_dev(h10, "id", "anchor-Design");
     			attr_dev(h10, "class", "svelte-fju7e8");
-    			add_location(h10, file, 33, 1, 975);
+    			add_location(h10, file, 33, 1, 1008);
     			attr_dev(h11, "id", "anchor-Projects");
     			attr_dev(h11, "class", "svelte-fju7e8");
-    			add_location(h11, file, 37, 1, 1055);
+    			add_location(h11, file, 37, 1, 1092);
     			attr_dev(main, "class", "svelte-fju7e8");
-    			add_location(main, file, 20, 0, 416);
+    			add_location(main, file, 20, 0, 436);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
