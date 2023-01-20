@@ -16,7 +16,7 @@
             width: 130px;
             height: 40px;
             color: #fff;
-            border-radius: 5px;
+            border-radius: 100px;
             padding: 10px 25px;
             font-family: 'Lato', sans-serif;
             font-weight: bold;
@@ -31,12 +31,23 @@
             4px 4px 5px 0px rgba(0,0,0,.1); */
             outline: none;
         }
-        button:hover {
-            cursor: pointer;
-        }
+        :global(body.dark-mode) button {
+            background: rgb(255, 255, 255);
+            background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(213, 205, 255) 100%);
+            color: #161611;
+	    }
+        /* :global(body.dark-mode) .btn-3:after {
+            background: rgb(255, 255, 255);
+	    }
+        :global(body.dark-mode) .btn-3:before {
+            background: rgb(255, 255, 255);
+	    }
+        :global(body.dark-mode) .btn-3 span:hover {
+            background: rgb(255, 255, 255);
+	    } */
         .btn-3 {
-            background: rgb(0,172,238);
-            background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
+            background: rgb(2, 38, 53);
+            background: linear-gradient(0deg, rgb(2, 42, 58) 0%, rgb(1, 12, 22) 100%);
             width: 130px;
             height: 40px;
             line-height: 42px;
