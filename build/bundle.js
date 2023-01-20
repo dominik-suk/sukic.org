@@ -491,9 +491,9 @@ var app = (function () {
     			button = element("button");
     			span = element("span");
     			if (default_slot) default_slot.c();
-    			attr_dev(span, "class", "svelte-14kba9i");
+    			attr_dev(span, "class", "svelte-94izff");
     			add_location(span, file$1, 12, 55, 427);
-    			attr_dev(button, "class", "custom-btn btn-3 svelte-14kba9i");
+    			attr_dev(button, "class", "custom-btn btn-3 svelte-94izff");
     			add_location(button, file$1, 12, 4, 376);
     		},
     		l: function claim(nodes) {
@@ -666,7 +666,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			h1 = element("h1");
-    			h1.textContent = "TEST";
+    			h1.textContent = "Hallo TEST";
     			attr_dev(h1, "class", "svelte-fju7e8");
     			add_location(h1, file, 31, 2, 982);
     		},
@@ -699,7 +699,7 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "TEST";
     			attr_dev(h1, "class", "svelte-fju7e8");
-    			add_location(h1, file, 35, 2, 1066);
+    			add_location(h1, file, 35, 2, 1072);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -730,7 +730,7 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "TEST";
     			attr_dev(h1, "class", "svelte-fju7e8");
-    			add_location(h1, file, 39, 2, 1154);
+    			add_location(h1, file, 39, 2, 1160);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -896,10 +896,10 @@ var app = (function () {
     			add_location(ul1, file, 25, 1, 683);
     			attr_dev(h10, "id", "anchor-Design");
     			attr_dev(h10, "class", "svelte-fju7e8");
-    			add_location(h10, file, 33, 1, 1008);
+    			add_location(h10, file, 33, 1, 1014);
     			attr_dev(h11, "id", "anchor-Projects");
     			attr_dev(h11, "class", "svelte-fju7e8");
-    			add_location(h11, file, 37, 1, 1092);
+    			add_location(h11, file, 37, 1, 1098);
     			attr_dev(main, "class", "svelte-fju7e8");
     			add_location(main, file, 20, 0, 436);
     		},
