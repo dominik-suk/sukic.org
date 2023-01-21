@@ -1,74 +1,30 @@
 <script>
 	import Button from './Button.svelte'
-	import { Recaptcha, recaptcha, observer } from "svelte-recaptcha-v2";
+	import { onMount } from "svelte";
 
-	const onCaptchaReady = (event) => {
-		console.log("recaptcha init has completed.")
-		/*
-		│You can enable your form button here.
-		*/
+	const key = "6LelNBYkAAAAAJUEuyoax3If2Oamnoca0NtSYTkS";
+	let State = {
+	idle: "idle",
+	requesting: "requesting",
+	success: "success"
 	};
+	let token;
+	let state = State.idle;
 
-	const onCaptchaSuccess = (event) => {
-		userTracker.resolve(event);
-		console.log("token received: " + event.detail.token);
-		/*
-		│If using checkbox method, you can attach your
-		│form logic here, or dispatch your custom event.
-		*/
-	};
+	function onSubmit() {
+	state = State.requesting;
+	doRecaptcha();
+	}
 
-	const onCaptchaError = (event) => {
-		console.log("recaptcha init has failed.");
-		/*
-		│Usually due to incorrect siteKey.
-		|Make sure you have the correct siteKey..
-		*/
-	};
+	function doRecaptcha() {
+	grecaptcha.ready(function() {
+		grecaptcha.execute(key, { action: "submit" }).then(function(t) {
+		state = State.success;
+		token = t;
+		});
+	});
+	}
 
-	const onCaptchaExpire = (event) => {
-		console.log("recaptcha api has expired");
-		/*
-		│Normally, you wouldn't need to do anything.
-		│Recaptcha should reinit itself automatically.
-		*/
-	};
-
-	const onCaptchaOpen = (event) => {
-		console.log("google decided to challange the user");
-		/*
-		│This fires when the puzzle frame pops.
-		*/
-	};
-
-	const onCaptchaClose = (event) => {
-		console.log("google decided to challange the user");
-		/*
-		│This fires when the puzzle frame closes.
-		│Usually happens when the user clicks outside
-		|the modal frame.
-		*/
-	};
-
-	const submitHandler = async () => {
-		console.log("launching recaptcha");
-		recaptcha.execute();
-
-		console.log("pending for google response");
-		const event = await Promise.resolve(observer);
-
-		const recaptchaToken = event.detail?.token ? event.detail.token : false;
-
-		if (!recaptchaToken) {
-			console.log("recaptcha is NOT OK");
-			return false;
-		}
-
-		console.log("token retrieved", recaptchaToken);
-	};
-
-	const googleRecaptchaSiteKey="6LeRwxQkAAAAAG1wudyYeYYm5TLTiDJQBdEve4j_";
-	
 	const formValues = {
 		name: "",
 		message: "",
@@ -92,6 +48,10 @@
 		test.push(i)
 	}
 </script>
+
+<svelte:head>
+  <script src="https://www.google.com/recaptcha/api.js?render={key}" async defer></script>
+</svelte:head>
 
 <main>
 	<ul style="position:unset;padding-top:1%;">
@@ -119,16 +79,6 @@
 	{/each}
 
 	<section id="Contact">
-
-	<Recaptcha
-		sitekey={googleRecaptchaSiteKey}
-		badge={"top"}
-		size={"invisible"}
-		on:success={onCaptchaSuccess}
-		on:error={onCaptchaError}
-		on:expired={onCaptchaExpire}
-		on:close={onCaptchaClose}
-		on:ready={onCaptchaReady} />
 		<div>
 			<h1>Contact</h1>
 			<h2>You can send me a message using this form.</h2>
@@ -149,21 +99,14 @@
 				<label for="message">Message</label>
 				<textarea id="message" rows="10" cols="80" bind:value={formValues.message} />
 			</div>
-			<button on:click={submitHandler}>Send</button>
-
+			<form on:submit|preventDefault={onSubmit}>
+				<button type="submit">submit</button>
+			  </form>
+			<div>state: {state}</div>
+			token: <br />{token}
 			<div>
 				<label for="country">Country</label>
 				<select id="country" bind:value={formValues.country}>
-					<option value="">Select a country</option>
-					<option value="india">India</option>
-					<option value="vietnam">Vietnam</option>
-					<option value="singapore">Singapore</option>
-				</select>
-			</div>
-
-			<div>
-				<label for="job-location">Job Location</label>
-				<select id="job-location" bind:value={formValues.jobLocation} multiple>
 					<option value="">Select a country</option>
 					<option value="india">India</option>
 					<option value="vietnam">Vietnam</option>
