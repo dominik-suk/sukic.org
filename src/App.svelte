@@ -5,26 +5,26 @@
 
 	const key = "6LelNBYkAAAAAJUEuyoax3If2Oamnoca0NtSYTkS";
 	let State = {
-	idle: "idle",
-	requesting: "requesting",
-	success: "success"
+		idle: "idle",
+		requesting: "requesting",
+		success: "success"
 	};
 
 	let token;
 	let state = State.idle;
 
 	function onSubmit() {
-	state = State.requesting;
-	doRecaptcha();
+		state = State.requesting;
+		doRecaptcha();
 	}
 
 	function doRecaptcha() {
-	grecaptcha.ready(function() {
-		grecaptcha.execute(key, { action: "submit" }).then(function(t) {
-		state = State.success;
-		token = t;
+		grecaptcha.ready(function() {
+			grecaptcha.execute(key, { action: "submit" }).then(function(t) {
+			state = State.success;
+			token = t;
+			});
 		});
-	});
 	}
 
 	const formValues = {
@@ -87,7 +87,7 @@
 			<h2>You can send me a message using this form</h2>
 		</div>
 
-		<form action="https://api.staticforms.xyz/submit" method="post" on:submit|preventDefault={onSubmit}>
+		<form action="https://api.staticforms.xyz/submit" method="post">
         <input type="hidden" name="accessKey" value="7cb6f557-c5cd-4476-80d5-bcc8612cc3c3">
 		<div>
 			<input type="text" name="name" placeholder="Name" bind:value={formValues.name}>
@@ -109,10 +109,10 @@
 				{/each}
 			</select>
 			<input type="text" name="$country" value={formValues.country} style="display:None">
-			<input style="margin-left: 290px;" type="submit" value="Send" />
+			<input id="submitButton" style="margin-left: 290px;" type="submit" value="Send" />
 		</div>
         <input type="hidden" name="replyTo" value="@">
-        <input type="hidden" name="redirectTo" value="https://example.com/contact/success">
+        <!-- <input type="hidden" name="redirectTo" value="https://example.com/contact/success"> -->
 		<input type="text" name="honeypot" style="display: none;">
     </form>
 	
