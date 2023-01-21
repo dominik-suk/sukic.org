@@ -1,6 +1,19 @@
 <script>
-	import Button from './Button.svelte'
-	import { onMount } from "svelte";
+	import Button from './Button.svelte';
+
+	// function sleep(ms) {
+    // 	return new Promise(resolve => setTimeout(resolve, ms));
+	// }
+
+	// let seconds = 10
+	// function timer() {
+	// 	document.getElementById("timerMessage").style="display:Unset;"
+	// 	for(let i = 0; i < seconds; i++) {
+	// 		sleep(1000)
+	// 		seconds -= 1
+	// 	}
+
+	// }
 
 	const key = "6LelNBYkAAAAAJUEuyoax3If2Oamnoca0NtSYTkS";
 	let State = {
@@ -8,6 +21,7 @@
 	requesting: "requesting",
 	success: "success"
 	};
+
 	let token;
 	let state = State.idle;
 
@@ -21,15 +35,20 @@
 		grecaptcha.execute(key, { action: "submit" }).then(function(t) {
 		state = State.success;
 		token = t;
+		// document.getElementById("submitButton").style="display:None;";
+		timer();
 		});
 	});
 	}
+	
+	let countries = ['Afghanistan', 'Åland Islands', 'Albania', 'Algeria', 'American Samoa', 'Andorra', 'Angola', 'Anguilla', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bangladesh', 'Barbados', 'Bahamas', 'Bahrain', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'British Indian Ocean Territory', 'British Virgin Islands', 'Brunei Darussalam', 'Bulgaria', 'Burkina Faso', 'Burma', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Cayman Islands', 'Central African Republic', 'Chad', 'Chile', 'China', 'Christmas Island', 'Cocos (Keeling) Islands', 'Colombia', 'Comoros', 'Congo-Brazzaville', 'Congo-Kinshasa', 'Cook Islands', 'Costa Rica', 'Croatia', 'Curaçao', 'Cyprus', 'Czech Republic', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'East Timor', 'Ecuador', 'El Salvador', 'Egypt', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Ethiopia', 'Falkland Islands', 'Faroe Islands', 'Federated States of Micronesia', 'Fiji', 'Finland', 'France', 'French Guiana', 'French Polynesia', 'French Southern Lands', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Gibraltar', 'Greece', 'Greenland', 'Grenada', 'Guadeloupe', 'Guam', 'Guatemala', 'Guernsey', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Heard and McDonald Islands', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iraq', 'Ireland', 'Isle of Man', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jersey', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macau', 'Macedonia', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Martinique', 'Mauritania', 'Mauritius', 'Mayotte', 'Mexico', 'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Montserrat', 'Morocco', 'Mozambique', 'Namibia', 'Nauru', 'Nepal', 'Netherlands', 'New Caledonia', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Niue', 'Norfolk Island', 'Northern Mariana Islands', 'Norway', 'Oman', 'Pakistan', 'Palau', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Pitcairn Islands', 'Poland', 'Portugal', 'Puerto Rico', 'Qatar', 'Réunion', 'Romania', 'Russia', 'Rwanda', 'Saint Barthélemy', 'Saint Helena', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Martin', 'Saint Pierre and Miquelon', 'Saint Vincent', 'Samoa', 'San Marino', 'São Tomé and Príncipe', 'Saudi Arabia', 'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Sint Maarten', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'South Georgia', 'South Korea', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Svalbard and Jan Mayen', 'Sweden', 'Swaziland', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Togo', 'Tokelau', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Turks and Caicos Islands', 'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Vatican City', 'Vietnam', 'Venezuela', 'Wallis and Futuna', 'Western Sahara', 'Yemen', 'Zambia', 'Zimbabwe'];
 
 	const formValues = {
 		name: "",
+		email: "",
+		subject: "",
 		message: "",
-		country: "",
-		jobLocation: ""
+		country: ""
 	}
 
 	function handleAnchorClick (event) {
@@ -78,42 +97,49 @@
 		<h1>TEST</h1>
 	{/each}
 
-	<section id="Contact">
+	<section id="Contact" style="margin-left: 20%;">
 		<div>
-			<h1>Contact</h1>
-			<h2>You can send me a message using this form.</h2>
+			<h1 style="line-height: .5;">Contact</h1>
+			<h2>You can send me a message using this form</h2>
 		</div>
 
+    <form action="https://api.staticforms.xyz/submit" method="post" on:submit|preventDefault={onSubmit}>
+        <input type="hidden" name="accessKey" value="7cb6f557-c5cd-4476-80d5-bcc8612cc3c3"> <!-- Required -->
 		<div>
-			<pre>
-				{JSON.stringify(formValues, null, 2)}
-			</pre>
+			<input type="text" name="name" placeholder="Name" bind:value={formValues.name}> <!-- Optional -->
+			<input type="email" placeholder="Email" bind:value={formValues.email}>
+			<input type="text" name="email" placeholder="Email" value={formValues.email} style="display:None"> <!-- Optional -->
 		</div>
-		<form>
-			<div>
-				<label for="name">Name</label>
-				<input id="name" bind:value={formValues.name} />
-			</div>
-	
-			<div>
-				<label for="message">Message</label>
-				<textarea id="message" rows="10" cols="80" bind:value={formValues.message} />
-			</div>
-			<form on:submit|preventDefault={onSubmit}>
-				<button type="submit">submit</button>
-			  </form>
-			<div>state: {state}</div>
-			token: <br />{token}
-			<div>
-				<label for="country">Country</label>
-				<select id="country" bind:value={formValues.country}>
-					<option value="">Select a country</option>
-					<option value="india">India</option>
-					<option value="vietnam">Vietnam</option>
-					<option value="singapore">Singapore</option>
-				</select>
-			</div>
-		</form>
+		<div>
+			<input type="text" name="subject" size="78" placeholder="Subject" bind:value={formValues.subject}> <!-- Optional -->
+		</div>
+		<div>
+        	<textarea name="message" rows="10" cols="80" placeholder="Message" bind:value={formValues.message}></textarea> <!-- Optional -->
+        </div>
+		<div>
+			<label for="country">Country</label>
+			<select id="country" bind:value={formValues.country}>
+				<option value="">Select a country</option>
+				{#each countries as country}
+					<option>{country}</option>
+				{/each}
+			</select>
+			<input type="text" name="$country" value={formValues.country} style="display:None">
+
+			<input id="submitButton" style="margin-left: 290px;" type="submit" value="Send" />
+		</div>
+        <input type="hidden" name="replyTo" value="@"> <!-- Optional -->
+        <input type="hidden" name="redirectTo" value="https://sukic.org">
+		<input type="text" name="honeypot" style="display: none;"> <!-- Optional -->
+		<!-- <h3 id="timerMessage" style="display: None;">You can send another message in {seconds} seconds</h3> -->
+    </form>
+	<div>
+		<pre>
+			{JSON.stringify(formValues, null, 2)}
+		</pre>
+	</div>
+		<div>state: {state}</div>
+		token: <br />{token}
 	</section>
 </main>
 
@@ -144,10 +170,6 @@
             color: white;
 			border-bottom: 1px solid white;
     }
-
-	input + label {
-		display: inline-flex;
-	}
 
 	textarea {
 		resize: none;

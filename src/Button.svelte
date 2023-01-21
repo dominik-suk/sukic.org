@@ -9,8 +9,11 @@
             document.getElementById("logo").src="images/logo.png";
         }
     }
+
     </script>
+
     <button class="custom-btn btn-3" on:click={toggle}><span><slot/></span></button>
+    
     <style>
         .custom-btn {
             width: 130px;
@@ -25,26 +28,14 @@
             transition: all 0.3s ease;
             position: relative;
             display: inline-block;
-            /* shadow effect too detailed 
-            box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-            7px 7px 20px 0px rgba(0,0,0,.1),
-            4px 4px 5px 0px rgba(0,0,0,.1); */
             outline: none;
         }
+
         :global(body.dark-mode) button {
             background: rgb(255, 255, 255);
             background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(213, 205, 255) 100%);
             color: #161611;
 	    }
-        /* :global(body.dark-mode) .btn-3:after {
-            background: rgb(255, 255, 255);
-	    }
-        :global(body.dark-mode) .btn-3:before {
-            background: rgb(255, 255, 255);
-	    }
-        :global(body.dark-mode) .btn-3 span:hover {
-            background: rgb(255, 255, 255);
-	    } */
         .btn-3 {
             background: rgb(2, 38, 53);
             background: linear-gradient(0deg, rgb(2, 42, 58) 0%, rgb(1, 12, 22) 100%);
@@ -54,12 +45,14 @@
             padding: 0;
             border: none;
         }
+
         .btn-3 span {
             position: relative;
             display: block;
             width: 100%;
             height: 100%;
         }
+        
         .btn-3:before,
         .btn-3:after {
             position: absolute;
@@ -69,27 +62,34 @@
             background: rgba(2,126,251,1);
             transition: all 0.3s ease;
         }
+
         .btn-3:before {
             height: 0%;
             width: 2px;
         }
+
         .btn-3:after {
             width: 0%;
             height: 2px;
         }
+
         .btn-3:hover{
             background: transparent;
             box-shadow: none;
         }
+
         .btn-3:hover:before {
             height: 100%;
         }
+
         .btn-3:hover:after {
             width: 100%;
         }
+
         .btn-3 span:hover{
             color: rgba(2,126,251,1);
         }
+
         .btn-3 span:before,
         .btn-3 span:after {
             position: absolute;
@@ -99,17 +99,21 @@
             background: rgba(2,126,251,1);
             transition: all 0.3s ease;
         }
+
         .btn-3 span:before {
             width: 2px;
             height: 0%;
         }
+
         .btn-3 span:after {
             width: 0%;
             height: 2px;
         }
+
         .btn-3 span:hover:before {
             height: 100%;
         }
+
         .btn-3 span:hover:after {
             width: 100%;
         }
