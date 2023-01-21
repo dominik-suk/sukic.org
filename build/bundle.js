@@ -117,13 +117,6 @@ var app = (function () {
         node.addEventListener(event, handler, options);
         return () => node.removeEventListener(event, handler, options);
     }
-    function prevent_default(fn) {
-        return function (event) {
-            event.preventDefault();
-            // @ts-ignore
-            return fn.call(this, event);
-        };
-    }
     function attr(node, attribute, value) {
         if (value == null)
             node.removeAttribute(attribute);
@@ -734,7 +727,7 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "TEST";
     			attr_dev(h1, "class", "svelte-1koxhyx");
-    			add_location(h1, file, 72, 2, 4987);
+    			add_location(h1, file, 72, 2, 4998);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -765,7 +758,7 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "TEST";
     			attr_dev(h1, "class", "svelte-1koxhyx");
-    			add_location(h1, file, 76, 2, 5064);
+    			add_location(h1, file, 76, 2, 5075);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -796,7 +789,7 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "TEST";
     			attr_dev(h1, "class", "svelte-1koxhyx");
-    			add_location(h1, file, 80, 2, 5145);
+    			add_location(h1, file, 80, 2, 5156);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -830,7 +823,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = /*country*/ ctx[13];
     			option.value = option.__value;
-    			add_location(option, file, 107, 5, 6286);
+    			add_location(option, file, 107, 5, 6261);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -924,21 +917,19 @@ var app = (function () {
     	let t34;
     	let input8;
     	let t35;
-    	let input9;
-    	let t36;
     	let div5;
     	let pre;
+    	let t36;
+    	let t37_value = JSON.stringify(/*formValues*/ ctx[2], null, 2) + "";
     	let t37;
-    	let t38_value = JSON.stringify(/*formValues*/ ctx[2], null, 2) + "";
     	let t38;
     	let t39;
-    	let t40;
     	let div6;
+    	let t40;
     	let t41;
     	let t42;
-    	let t43;
     	let br;
-    	let t44;
+    	let t43;
     	let current;
     	let mounted;
     	let dispose;
@@ -951,7 +942,7 @@ var app = (function () {
     			$$inline: true
     		});
 
-    	let each_value_3 = /*test*/ ctx[5];
+    	let each_value_3 = /*test*/ ctx[4];
     	validate_each_argument(each_value_3);
     	let each_blocks_3 = [];
 
@@ -959,7 +950,7 @@ var app = (function () {
     		each_blocks_3[i] = create_each_block_3(get_each_context_3(ctx, each_value_3, i));
     	}
 
-    	let each_value_2 = /*test*/ ctx[5];
+    	let each_value_2 = /*test*/ ctx[4];
     	validate_each_argument(each_value_2);
     	let each_blocks_2 = [];
 
@@ -967,7 +958,7 @@ var app = (function () {
     		each_blocks_2[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
     	}
 
-    	let each_value_1 = /*test*/ ctx[5];
+    	let each_value_1 = /*test*/ ctx[4];
     	validate_each_argument(each_value_1);
     	let each_blocks_1 = [];
 
@@ -1081,149 +1072,144 @@ var app = (function () {
     			t34 = space();
     			input8 = element("input");
     			t35 = space();
-    			input9 = element("input");
-    			t36 = space();
     			div5 = element("div");
     			pre = element("pre");
-    			t37 = text("\t\t\t");
-    			t38 = text(t38_value);
-    			t39 = text("\r\n\t\t");
-    			t40 = space();
+    			t36 = text("\t\t\t");
+    			t37 = text(t37_value);
+    			t38 = text("\r\n\t\t");
+    			t39 = space();
     			div6 = element("div");
-    			t41 = text("state: ");
-    			t42 = text(/*state*/ ctx[1]);
-    			t43 = text("\r\n\ttoken: ");
+    			t40 = text("state: ");
+    			t41 = text(/*state*/ ctx[1]);
+    			t42 = text("\r\n\ttoken: ");
     			br = element("br");
-    			t44 = text(/*token*/ ctx[0]);
+    			t43 = text(/*token*/ ctx[0]);
     			if (!src_url_equal(script.src, script_src_value = "https://www.google.com/recaptcha/api.js?render=" + key)) attr_dev(script, "src", script_src_value);
     			script.async = true;
     			script.defer = true;
-    			add_location(script, file, 55, 2, 4263);
+    			add_location(script, file, 55, 2, 4274);
     			attr_dev(img, "id", "logo");
     			attr_dev(img, "href", "../App.svelte");
     			if (!src_url_equal(img.src, img_src_value = "images/logo.png")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "DSukic logo");
     			attr_dev(img, "width", "115");
-    			add_location(img, file, 60, 6, 4431);
+    			add_location(img, file, 60, 6, 4442);
     			attr_dev(li0, "class", "svelte-1koxhyx");
-    			add_location(li0, file, 60, 2, 4427);
+    			add_location(li0, file, 60, 2, 4438);
     			set_style(li1, "padding-left", "84%");
     			set_style(li1, "padding-bottom", "2%");
     			attr_dev(li1, "class", "svelte-1koxhyx");
-    			add_location(li1, file, 61, 2, 4528);
+    			add_location(li1, file, 61, 2, 4539);
     			set_style(ul0, "position", "unset");
     			set_style(ul0, "padding-top", "1%");
     			attr_dev(ul0, "class", "svelte-1koxhyx");
-    			add_location(ul0, file, 59, 1, 4380);
+    			add_location(ul0, file, 59, 1, 4391);
     			attr_dev(a0, "href", "#Home");
     			attr_dev(a0, "class", "svelte-1koxhyx");
-    			add_location(a0, file, 65, 16, 4657);
+    			add_location(a0, file, 65, 16, 4668);
     			attr_dev(li2, "id", "Home");
     			attr_dev(li2, "class", "svelte-1koxhyx");
-    			add_location(li2, file, 65, 2, 4643);
+    			add_location(li2, file, 65, 2, 4654);
     			attr_dev(a1, "href", "#Design");
     			attr_dev(a1, "class", "svelte-1koxhyx");
-    			add_location(a1, file, 66, 6, 4723);
+    			add_location(a1, file, 66, 6, 4734);
     			attr_dev(li3, "class", "svelte-1koxhyx");
-    			add_location(li3, file, 66, 2, 4719);
+    			add_location(li3, file, 66, 2, 4730);
     			attr_dev(a2, "href", "#Projects");
     			attr_dev(a2, "class", "svelte-1koxhyx");
-    			add_location(a2, file, 67, 6, 4793);
+    			add_location(a2, file, 67, 6, 4804);
     			attr_dev(li4, "class", "svelte-1koxhyx");
-    			add_location(li4, file, 67, 2, 4789);
+    			add_location(li4, file, 67, 2, 4800);
     			attr_dev(a3, "href", "#Contact");
     			attr_dev(a3, "class", "svelte-1koxhyx");
-    			add_location(a3, file, 68, 28, 4889);
+    			add_location(a3, file, 68, 28, 4900);
     			set_style(li5, "float", "right");
     			attr_dev(li5, "class", "svelte-1koxhyx");
-    			add_location(li5, file, 68, 2, 4863);
+    			add_location(li5, file, 68, 2, 4874);
     			attr_dev(ul1, "class", "navbar svelte-1koxhyx");
-    			add_location(ul1, file, 64, 1, 4620);
+    			add_location(ul1, file, 64, 1, 4631);
     			attr_dev(h10, "id", "Design");
     			attr_dev(h10, "class", "svelte-1koxhyx");
-    			add_location(h10, file, 74, 1, 5013);
+    			add_location(h10, file, 74, 1, 5024);
     			attr_dev(h11, "id", "Projects");
     			attr_dev(h11, "class", "svelte-1koxhyx");
-    			add_location(h11, file, 78, 1, 5090);
+    			add_location(h11, file, 78, 1, 5101);
     			set_style(h12, "line-height", ".5");
     			attr_dev(h12, "class", "svelte-1koxhyx");
-    			add_location(h12, file, 85, 3, 5235);
+    			add_location(h12, file, 85, 3, 5246);
     			attr_dev(h2, "class", "svelte-1koxhyx");
-    			add_location(h2, file, 86, 3, 5281);
-    			add_location(div0, file, 84, 2, 5225);
+    			add_location(h2, file, 86, 3, 5292);
+    			add_location(div0, file, 84, 2, 5236);
     			attr_dev(input0, "type", "hidden");
     			attr_dev(input0, "name", "accessKey");
     			input0.value = "7cb6f557-c5cd-4476-80d5-bcc8612cc3c3";
-    			add_location(input0, file, 90, 8, 5457);
+    			add_location(input0, file, 90, 8, 5432);
     			attr_dev(input1, "type", "text");
     			attr_dev(input1, "name", "name");
     			attr_dev(input1, "placeholder", "Name");
-    			add_location(input1, file, 92, 3, 5554);
+    			add_location(input1, file, 92, 3, 5529);
     			attr_dev(input2, "type", "email");
     			attr_dev(input2, "placeholder", "Email");
-    			add_location(input2, file, 93, 3, 5638);
+    			add_location(input2, file, 93, 3, 5613);
     			attr_dev(input3, "type", "text");
     			attr_dev(input3, "name", "email");
     			attr_dev(input3, "placeholder", "Email");
     			input3.value = input3_value_value = /*formValues*/ ctx[2].email;
     			set_style(input3, "display", "None");
-    			add_location(input3, file, 94, 3, 5713);
-    			add_location(div1, file, 91, 2, 5544);
+    			add_location(input3, file, 94, 3, 5688);
+    			add_location(div1, file, 91, 2, 5519);
     			attr_dev(input4, "type", "text");
     			attr_dev(input4, "name", "subject");
     			attr_dev(input4, "size", "78");
     			attr_dev(input4, "placeholder", "Subject");
-    			add_location(input4, file, 97, 3, 5835);
-    			add_location(div2, file, 96, 2, 5825);
+    			add_location(input4, file, 97, 3, 5810);
+    			add_location(div2, file, 96, 2, 5800);
     			attr_dev(textarea, "name", "message");
     			attr_dev(textarea, "rows", "10");
     			attr_dev(textarea, "cols", "80");
     			attr_dev(textarea, "placeholder", "Message");
     			attr_dev(textarea, "class", "svelte-1koxhyx");
-    			add_location(textarea, file, 100, 9, 5963);
-    			add_location(div3, file, 99, 2, 5947);
+    			add_location(textarea, file, 100, 9, 5938);
+    			add_location(div3, file, 99, 2, 5922);
     			attr_dev(label, "for", "country");
-    			add_location(label, file, 103, 3, 6103);
+    			add_location(label, file, 103, 3, 6078);
     			option.__value = "";
     			option.value = option.__value;
-    			add_location(option, file, 105, 4, 6203);
+    			add_location(option, file, 105, 4, 6178);
     			attr_dev(select, "id", "country");
-    			if (/*formValues*/ ctx[2].country === void 0) add_render_callback(() => /*select_change_handler*/ ctx[10].call(select));
-    			add_location(select, file, 104, 3, 6144);
+    			if (/*formValues*/ ctx[2].country === void 0) add_render_callback(() => /*select_change_handler*/ ctx[9].call(select));
+    			add_location(select, file, 104, 3, 6119);
     			attr_dev(input5, "type", "text");
     			attr_dev(input5, "name", "$country");
     			input5.value = input5_value_value = /*formValues*/ ctx[2].country;
     			set_style(input5, "display", "None");
-    			add_location(input5, file, 110, 3, 6344);
+    			add_location(input5, file, 110, 3, 6319);
+    			attr_dev(input6, "id", "submitButton");
     			set_style(input6, "margin-left", "290px");
     			attr_dev(input6, "type", "submit");
     			input6.value = "Send";
-    			add_location(input6, file, 111, 3, 6432);
-    			add_location(div4, file, 102, 2, 6093);
+    			add_location(input6, file, 111, 3, 6407);
+    			add_location(div4, file, 102, 2, 6068);
     			attr_dev(input7, "type", "hidden");
     			attr_dev(input7, "name", "replyTo");
     			input7.value = "@";
-    			add_location(input7, file, 113, 8, 6516);
-    			attr_dev(input8, "type", "hidden");
-    			attr_dev(input8, "name", "redirectTo");
-    			input8.value = "https://example.com/contact/success";
-    			add_location(input8, file, 114, 8, 6572);
-    			attr_dev(input9, "type", "text");
-    			attr_dev(input9, "name", "honeypot");
-    			set_style(input9, "display", "none");
-    			add_location(input9, file, 115, 2, 6659);
+    			add_location(input7, file, 113, 8, 6509);
+    			attr_dev(input8, "type", "text");
+    			attr_dev(input8, "name", "honeypot");
+    			set_style(input8, "display", "none");
+    			add_location(input8, file, 115, 2, 6661);
     			attr_dev(form, "action", "https://api.staticforms.xyz/submit");
     			attr_dev(form, "method", "post");
-    			add_location(form, file, 89, 2, 5347);
-    			add_location(pre, file, 119, 2, 6745);
-    			add_location(div5, file, 118, 1, 6736);
-    			add_location(div6, file, 123, 1, 6814);
-    			add_location(br, file, 126, 8, 6856);
+    			add_location(form, file, 89, 2, 5358);
+    			add_location(pre, file, 119, 2, 6747);
+    			add_location(div5, file, 118, 1, 6738);
+    			add_location(div6, file, 123, 1, 6816);
+    			add_location(br, file, 126, 8, 6858);
     			attr_dev(section, "id", "Contact");
     			set_style(section, "margin-left", "20%");
-    			add_location(section, file, 83, 1, 5173);
+    			add_location(section, file, 83, 1, 5184);
     			attr_dev(main, "class", "svelte-1koxhyx");
-    			add_location(main, file, 58, 0, 4371);
+    			add_location(main, file, 58, 0, 4382);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1319,21 +1305,19 @@ var app = (function () {
     			append_dev(form, input7);
     			append_dev(form, t34);
     			append_dev(form, input8);
-    			append_dev(form, t35);
-    			append_dev(form, input9);
-    			append_dev(section, t36);
+    			append_dev(section, t35);
     			append_dev(section, div5);
     			append_dev(div5, pre);
+    			append_dev(pre, t36);
     			append_dev(pre, t37);
     			append_dev(pre, t38);
-    			append_dev(pre, t39);
-    			append_dev(section, t40);
+    			append_dev(section, t39);
     			append_dev(section, div6);
+    			append_dev(div6, t40);
     			append_dev(div6, t41);
-    			append_dev(div6, t42);
-    			append_dev(section, t43);
+    			append_dev(section, t42);
     			append_dev(section, br);
-    			append_dev(section, t44);
+    			append_dev(section, t43);
     			current = true;
 
     			if (!mounted) {
@@ -1342,12 +1326,11 @@ var app = (function () {
     					listen_dev(a1, "click", handleAnchorClick, false, false, false),
     					listen_dev(a2, "click", handleAnchorClick, false, false, false),
     					listen_dev(a3, "click", handleAnchorClick, false, false, false),
-    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[6]),
-    					listen_dev(input2, "input", /*input2_input_handler*/ ctx[7]),
-    					listen_dev(input4, "input", /*input4_input_handler*/ ctx[8]),
-    					listen_dev(textarea, "input", /*textarea_input_handler*/ ctx[9]),
-    					listen_dev(select, "change", /*select_change_handler*/ ctx[10]),
-    					listen_dev(form, "submit", prevent_default(/*onSubmit*/ ctx[4]), false, true, false)
+    					listen_dev(input1, "input", /*input1_input_handler*/ ctx[5]),
+    					listen_dev(input2, "input", /*input2_input_handler*/ ctx[6]),
+    					listen_dev(input4, "input", /*input4_input_handler*/ ctx[7]),
+    					listen_dev(textarea, "input", /*textarea_input_handler*/ ctx[8]),
+    					listen_dev(select, "change", /*select_change_handler*/ ctx[9])
     				];
 
     				mounted = true;
@@ -1414,9 +1397,9 @@ var app = (function () {
     				prop_dev(input5, "value", input5_value_value);
     			}
 
-    			if ((!current || dirty & /*formValues*/ 4) && t38_value !== (t38_value = JSON.stringify(/*formValues*/ ctx[2], null, 2) + "")) set_data_dev(t38, t38_value);
-    			if (!current || dirty & /*state*/ 2) set_data_dev(t42, /*state*/ ctx[1]);
-    			if (!current || dirty & /*token*/ 1) set_data_dev(t44, /*token*/ ctx[0]);
+    			if ((!current || dirty & /*formValues*/ 4) && t37_value !== (t37_value = JSON.stringify(/*formValues*/ ctx[2], null, 2) + "")) set_data_dev(t37, t37_value);
+    			if (!current || dirty & /*state*/ 2) set_data_dev(t41, /*state*/ ctx[1]);
+    			if (!current || dirty & /*token*/ 1) set_data_dev(t43, /*token*/ ctx[0]);
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -1804,7 +1787,7 @@ var app = (function () {
     		if ('State' in $$props) State = $$props.State;
     		if ('token' in $$props) $$invalidate(0, token = $$props.token);
     		if ('state' in $$props) $$invalidate(1, state = $$props.state);
-    		if ('test' in $$props) $$invalidate(5, test = $$props.test);
+    		if ('test' in $$props) $$invalidate(4, test = $$props.test);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -1816,7 +1799,6 @@ var app = (function () {
     		state,
     		formValues,
     		countries,
-    		onSubmit,
     		test,
     		input1_input_handler,
     		input2_input_handler,
