@@ -168,6 +168,23 @@ var app = (function () {
     function set_current_component(component) {
         current_component = component;
     }
+    function get_current_component() {
+        if (!current_component)
+            throw new Error('Function called outside component initialization');
+        return current_component;
+    }
+    /**
+     * The `onMount` function schedules a callback to run as soon as the component has been mounted to the DOM.
+     * It must be called during the component's initialisation (but doesn't need to live *inside* the component;
+     * it can be called from an external module).
+     *
+     * `onMount` does not run inside a [server-side component](/docs#run-time-server-side-component-api).
+     *
+     * https://svelte.dev/docs#run-time-svelte-onmount
+     */
+    function onMount(fn) {
+        get_current_component().$$.on_mount.push(fn);
+    }
 
     const dirty_components = [];
     const binding_callbacks = [];
@@ -681,7 +698,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (78:51) <Button>
+    // (62:51) <Button>
     function create_default_slot(ctx) {
     	let t;
 
@@ -701,14 +718,14 @@ var app = (function () {
     		block,
     		id: create_default_slot.name,
     		type: "slot",
-    		source: "(78:51) <Button>",
+    		source: "(62:51) <Button>",
     		ctx
     	});
 
     	return block;
     }
 
-    // (88:1) {#each test as t}
+    // (72:1) {#each test as t}
     function create_each_block_3(ctx) {
     	let h1;
 
@@ -717,7 +734,7 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "TEST";
     			attr_dev(h1, "class", "svelte-1koxhyx");
-    			add_location(h1, file, 88, 2, 5350);
+    			add_location(h1, file, 72, 2, 4987);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -732,14 +749,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(88:1) {#each test as t}",
+    		source: "(72:1) {#each test as t}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (92:1) {#each test as t}
+    // (76:1) {#each test as t}
     function create_each_block_2(ctx) {
     	let h1;
 
@@ -748,7 +765,7 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "TEST";
     			attr_dev(h1, "class", "svelte-1koxhyx");
-    			add_location(h1, file, 92, 2, 5427);
+    			add_location(h1, file, 76, 2, 5064);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -763,14 +780,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(92:1) {#each test as t}",
+    		source: "(76:1) {#each test as t}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (96:1) {#each test as t}
+    // (80:1) {#each test as t}
     function create_each_block_1(ctx) {
     	let h1;
 
@@ -779,7 +796,7 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "TEST";
     			attr_dev(h1, "class", "svelte-1koxhyx");
-    			add_location(h1, file, 96, 2, 5508);
+    			add_location(h1, file, 80, 2, 5145);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -794,14 +811,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(96:1) {#each test as t}",
+    		source: "(80:1) {#each test as t}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (123:4) {#each countries as country}
+    // (107:4) {#each countries as country}
     function create_each_block(ctx) {
     	let option;
     	let t_value = /*country*/ ctx[13] + "";
@@ -813,7 +830,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = /*country*/ ctx[13];
     			option.value = option.__value;
-    			add_location(option, file, 123, 5, 6741);
+    			add_location(option, file, 107, 5, 6286);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -829,7 +846,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(123:4) {#each countries as country}",
+    		source: "(107:4) {#each countries as country}",
     		ctx
     	});
 
@@ -958,7 +975,7 @@ var app = (function () {
     		each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
     	}
 
-    	let each_value = /*countries*/ ctx[4];
+    	let each_value = /*countries*/ ctx[3];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -1075,139 +1092,138 @@ var app = (function () {
     			div6 = element("div");
     			t41 = text("state: ");
     			t42 = text(/*state*/ ctx[1]);
-    			t43 = text("\r\n\t\ttoken: ");
+    			t43 = text("\r\n\ttoken: ");
     			br = element("br");
     			t44 = text(/*token*/ ctx[0]);
     			if (!src_url_equal(script.src, script_src_value = "https://www.google.com/recaptcha/api.js?render=" + key)) attr_dev(script, "src", script_src_value);
     			script.async = true;
     			script.defer = true;
-    			add_location(script, file, 71, 2, 4626);
+    			add_location(script, file, 55, 2, 4263);
     			attr_dev(img, "id", "logo");
     			attr_dev(img, "href", "../App.svelte");
     			if (!src_url_equal(img.src, img_src_value = "images/logo.png")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "DSukic logo");
     			attr_dev(img, "width", "115");
-    			add_location(img, file, 76, 6, 4794);
+    			add_location(img, file, 60, 6, 4431);
     			attr_dev(li0, "class", "svelte-1koxhyx");
-    			add_location(li0, file, 76, 2, 4790);
+    			add_location(li0, file, 60, 2, 4427);
     			set_style(li1, "padding-left", "84%");
     			set_style(li1, "padding-bottom", "2%");
     			attr_dev(li1, "class", "svelte-1koxhyx");
-    			add_location(li1, file, 77, 2, 4891);
+    			add_location(li1, file, 61, 2, 4528);
     			set_style(ul0, "position", "unset");
     			set_style(ul0, "padding-top", "1%");
     			attr_dev(ul0, "class", "svelte-1koxhyx");
-    			add_location(ul0, file, 75, 1, 4743);
+    			add_location(ul0, file, 59, 1, 4380);
     			attr_dev(a0, "href", "#Home");
     			attr_dev(a0, "class", "svelte-1koxhyx");
-    			add_location(a0, file, 81, 16, 5020);
+    			add_location(a0, file, 65, 16, 4657);
     			attr_dev(li2, "id", "Home");
     			attr_dev(li2, "class", "svelte-1koxhyx");
-    			add_location(li2, file, 81, 2, 5006);
+    			add_location(li2, file, 65, 2, 4643);
     			attr_dev(a1, "href", "#Design");
     			attr_dev(a1, "class", "svelte-1koxhyx");
-    			add_location(a1, file, 82, 6, 5086);
+    			add_location(a1, file, 66, 6, 4723);
     			attr_dev(li3, "class", "svelte-1koxhyx");
-    			add_location(li3, file, 82, 2, 5082);
+    			add_location(li3, file, 66, 2, 4719);
     			attr_dev(a2, "href", "#Projects");
     			attr_dev(a2, "class", "svelte-1koxhyx");
-    			add_location(a2, file, 83, 6, 5156);
+    			add_location(a2, file, 67, 6, 4793);
     			attr_dev(li4, "class", "svelte-1koxhyx");
-    			add_location(li4, file, 83, 2, 5152);
+    			add_location(li4, file, 67, 2, 4789);
     			attr_dev(a3, "href", "#Contact");
     			attr_dev(a3, "class", "svelte-1koxhyx");
-    			add_location(a3, file, 84, 28, 5252);
+    			add_location(a3, file, 68, 28, 4889);
     			set_style(li5, "float", "right");
     			attr_dev(li5, "class", "svelte-1koxhyx");
-    			add_location(li5, file, 84, 2, 5226);
+    			add_location(li5, file, 68, 2, 4863);
     			attr_dev(ul1, "class", "navbar svelte-1koxhyx");
-    			add_location(ul1, file, 80, 1, 4983);
+    			add_location(ul1, file, 64, 1, 4620);
     			attr_dev(h10, "id", "Design");
     			attr_dev(h10, "class", "svelte-1koxhyx");
-    			add_location(h10, file, 90, 1, 5376);
+    			add_location(h10, file, 74, 1, 5013);
     			attr_dev(h11, "id", "Projects");
     			attr_dev(h11, "class", "svelte-1koxhyx");
-    			add_location(h11, file, 94, 1, 5453);
+    			add_location(h11, file, 78, 1, 5090);
     			set_style(h12, "line-height", ".5");
     			attr_dev(h12, "class", "svelte-1koxhyx");
-    			add_location(h12, file, 101, 3, 5598);
+    			add_location(h12, file, 85, 3, 5235);
     			attr_dev(h2, "class", "svelte-1koxhyx");
-    			add_location(h2, file, 102, 3, 5644);
-    			add_location(div0, file, 100, 2, 5588);
+    			add_location(h2, file, 86, 3, 5281);
+    			add_location(div0, file, 84, 2, 5225);
     			attr_dev(input0, "type", "hidden");
     			attr_dev(input0, "name", "accessKey");
     			input0.value = "7cb6f557-c5cd-4476-80d5-bcc8612cc3c3";
-    			add_location(input0, file, 106, 8, 5822);
+    			add_location(input0, file, 90, 8, 5457);
     			attr_dev(input1, "type", "text");
     			attr_dev(input1, "name", "name");
     			attr_dev(input1, "placeholder", "Name");
-    			add_location(input1, file, 108, 3, 5937);
+    			add_location(input1, file, 92, 3, 5554);
     			attr_dev(input2, "type", "email");
     			attr_dev(input2, "placeholder", "Email");
-    			add_location(input2, file, 109, 3, 6039);
+    			add_location(input2, file, 93, 3, 5638);
     			attr_dev(input3, "type", "text");
     			attr_dev(input3, "name", "email");
     			attr_dev(input3, "placeholder", "Email");
     			input3.value = input3_value_value = /*formValues*/ ctx[2].email;
     			set_style(input3, "display", "None");
-    			add_location(input3, file, 110, 3, 6114);
-    			add_location(div1, file, 107, 2, 5927);
+    			add_location(input3, file, 94, 3, 5713);
+    			add_location(div1, file, 91, 2, 5544);
     			attr_dev(input4, "type", "text");
     			attr_dev(input4, "name", "subject");
     			attr_dev(input4, "size", "78");
     			attr_dev(input4, "placeholder", "Subject");
-    			add_location(input4, file, 113, 3, 6254);
-    			add_location(div2, file, 112, 2, 6244);
+    			add_location(input4, file, 97, 3, 5835);
+    			add_location(div2, file, 96, 2, 5825);
     			attr_dev(textarea, "name", "message");
     			attr_dev(textarea, "rows", "10");
     			attr_dev(textarea, "cols", "80");
     			attr_dev(textarea, "placeholder", "Message");
     			attr_dev(textarea, "class", "svelte-1koxhyx");
-    			add_location(textarea, file, 116, 9, 6400);
-    			add_location(div3, file, 115, 2, 6384);
+    			add_location(textarea, file, 100, 9, 5963);
+    			add_location(div3, file, 99, 2, 5947);
     			attr_dev(label, "for", "country");
-    			add_location(label, file, 119, 3, 6558);
+    			add_location(label, file, 103, 3, 6103);
     			option.__value = "";
     			option.value = option.__value;
-    			add_location(option, file, 121, 4, 6658);
+    			add_location(option, file, 105, 4, 6203);
     			attr_dev(select, "id", "country");
     			if (/*formValues*/ ctx[2].country === void 0) add_render_callback(() => /*select_change_handler*/ ctx[10].call(select));
-    			add_location(select, file, 120, 3, 6599);
+    			add_location(select, file, 104, 3, 6144);
     			attr_dev(input5, "type", "text");
     			attr_dev(input5, "name", "$country");
     			input5.value = input5_value_value = /*formValues*/ ctx[2].country;
     			set_style(input5, "display", "None");
-    			add_location(input5, file, 126, 3, 6799);
-    			attr_dev(input6, "id", "submitButton");
+    			add_location(input5, file, 110, 3, 6344);
     			set_style(input6, "margin-left", "290px");
     			attr_dev(input6, "type", "submit");
     			input6.value = "Send";
-    			add_location(input6, file, 128, 3, 6889);
-    			add_location(div4, file, 118, 2, 6548);
+    			add_location(input6, file, 111, 3, 6432);
+    			add_location(div4, file, 102, 2, 6093);
     			attr_dev(input7, "type", "hidden");
     			attr_dev(input7, "name", "replyTo");
     			input7.value = "@";
-    			add_location(input7, file, 130, 8, 6991);
+    			add_location(input7, file, 113, 8, 6516);
     			attr_dev(input8, "type", "hidden");
     			attr_dev(input8, "name", "redirectTo");
-    			input8.value = "https://sukic.org";
-    			add_location(input8, file, 131, 8, 7065);
+    			input8.value = "https://example.com/contact/success";
+    			add_location(input8, file, 114, 8, 6572);
     			attr_dev(input9, "type", "text");
     			attr_dev(input9, "name", "honeypot");
     			set_style(input9, "display", "none");
-    			add_location(input9, file, 132, 2, 7134);
+    			add_location(input9, file, 115, 2, 6659);
     			attr_dev(form, "action", "https://api.staticforms.xyz/submit");
     			attr_dev(form, "method", "post");
-    			add_location(form, file, 105, 4, 5712);
-    			add_location(pre, file, 136, 2, 7347);
-    			add_location(div5, file, 135, 1, 7338);
-    			add_location(div6, file, 140, 2, 7417);
-    			add_location(br, file, 141, 9, 7453);
+    			add_location(form, file, 89, 2, 5347);
+    			add_location(pre, file, 119, 2, 6745);
+    			add_location(div5, file, 118, 1, 6736);
+    			add_location(div6, file, 123, 1, 6814);
+    			add_location(br, file, 126, 8, 6856);
     			attr_dev(section, "id", "Contact");
     			set_style(section, "margin-left", "20%");
-    			add_location(section, file, 99, 1, 5536);
+    			add_location(section, file, 83, 1, 5173);
     			attr_dev(main, "class", "svelte-1koxhyx");
-    			add_location(main, file, 74, 0, 4734);
+    			add_location(main, file, 58, 0, 4371);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1331,7 +1347,7 @@ var app = (function () {
     					listen_dev(input4, "input", /*input4_input_handler*/ ctx[8]),
     					listen_dev(textarea, "input", /*textarea_input_handler*/ ctx[9]),
     					listen_dev(select, "change", /*select_change_handler*/ ctx[10]),
-    					listen_dev(form, "submit", prevent_default(/*onSubmit*/ ctx[3]), false, true, false)
+    					listen_dev(form, "submit", prevent_default(/*onSubmit*/ ctx[4]), false, true, false)
     				];
 
     				mounted = true;
@@ -1346,28 +1362,28 @@ var app = (function () {
 
     			button.$set(button_changes);
 
-    			if (dirty & /*formValues, countries*/ 20 && input1.value !== /*formValues*/ ctx[2].name) {
+    			if (dirty & /*formValues, countries*/ 12 && input1.value !== /*formValues*/ ctx[2].name) {
     				set_input_value(input1, /*formValues*/ ctx[2].name);
     			}
 
-    			if (dirty & /*formValues, countries*/ 20 && input2.value !== /*formValues*/ ctx[2].email) {
+    			if (dirty & /*formValues, countries*/ 12 && input2.value !== /*formValues*/ ctx[2].email) {
     				set_input_value(input2, /*formValues*/ ctx[2].email);
     			}
 
-    			if (!current || dirty & /*formValues, countries*/ 20 && input3_value_value !== (input3_value_value = /*formValues*/ ctx[2].email) && input3.value !== input3_value_value) {
+    			if (!current || dirty & /*formValues, countries*/ 12 && input3_value_value !== (input3_value_value = /*formValues*/ ctx[2].email) && input3.value !== input3_value_value) {
     				prop_dev(input3, "value", input3_value_value);
     			}
 
-    			if (dirty & /*formValues, countries*/ 20 && input4.value !== /*formValues*/ ctx[2].subject) {
+    			if (dirty & /*formValues, countries*/ 12 && input4.value !== /*formValues*/ ctx[2].subject) {
     				set_input_value(input4, /*formValues*/ ctx[2].subject);
     			}
 
-    			if (dirty & /*formValues, countries*/ 20) {
+    			if (dirty & /*formValues, countries*/ 12) {
     				set_input_value(textarea, /*formValues*/ ctx[2].message);
     			}
 
-    			if (dirty & /*countries*/ 16) {
-    				each_value = /*countries*/ ctx[4];
+    			if (dirty & /*countries*/ 8) {
+    				each_value = /*countries*/ ctx[3];
     				validate_each_argument(each_value);
     				let i;
 
@@ -1390,11 +1406,11 @@ var app = (function () {
     				each_blocks.length = each_value.length;
     			}
 
-    			if (dirty & /*formValues, countries*/ 20) {
+    			if (dirty & /*formValues, countries*/ 12) {
     				select_option(select, /*formValues*/ ctx[2].country);
     			}
 
-    			if (!current || dirty & /*formValues, countries*/ 20 && input5_value_value !== (input5_value_value = /*formValues*/ ctx[2].country) && input5.value !== input5_value_value) {
+    			if (!current || dirty & /*formValues, countries*/ 12 && input5_value_value !== (input5_value_value = /*formValues*/ ctx[2].country) && input5.value !== input5_value_value) {
     				prop_dev(input5, "value", input5_value_value);
     			}
 
@@ -1453,32 +1469,6 @@ var app = (function () {
     function instance($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
-
-    	let State = {
-    		idle: "idle",
-    		requesting: "requesting",
-    		success: "success"
-    	};
-
-    	let token;
-    	let state = State.idle;
-
-    	function onSubmit() {
-    		$$invalidate(1, state = State.requesting);
-    		doRecaptcha();
-    	}
-
-    	function doRecaptcha() {
-    		grecaptcha.ready(function () {
-    			grecaptcha.execute(key, { action: "submit" }).then(function (t) {
-    				$$invalidate(1, state = State.success);
-    				$$invalidate(0, token = t);
-
-    				// document.getElementById("submitButton").style="display:None;";
-    				timer();
-    			});
-    		});
-    	}
 
     	let countries = [
     		'Afghanistan',
@@ -1721,6 +1711,29 @@ var app = (function () {
     		'Zimbabwe'
     	];
 
+    	let State = {
+    		idle: "idle",
+    		requesting: "requesting",
+    		success: "success"
+    	};
+
+    	let token;
+    	let state = State.idle;
+
+    	function onSubmit() {
+    		$$invalidate(1, state = State.requesting);
+    		doRecaptcha();
+    	}
+
+    	function doRecaptcha() {
+    		grecaptcha.ready(function () {
+    			grecaptcha.execute(key, { action: "submit" }).then(function (t) {
+    				$$invalidate(1, state = State.success);
+    				$$invalidate(0, token = t);
+    			});
+    		});
+    	}
+
     	const formValues = {
     		name: "",
     		email: "",
@@ -1744,52 +1757,53 @@ var app = (function () {
     	function input1_input_handler() {
     		formValues.name = this.value;
     		$$invalidate(2, formValues);
-    		$$invalidate(4, countries);
+    		$$invalidate(3, countries);
     	}
 
     	function input2_input_handler() {
     		formValues.email = this.value;
     		$$invalidate(2, formValues);
-    		$$invalidate(4, countries);
+    		$$invalidate(3, countries);
     	}
 
     	function input4_input_handler() {
     		formValues.subject = this.value;
     		$$invalidate(2, formValues);
-    		$$invalidate(4, countries);
+    		$$invalidate(3, countries);
     	}
 
     	function textarea_input_handler() {
     		formValues.message = this.value;
     		$$invalidate(2, formValues);
-    		$$invalidate(4, countries);
+    		$$invalidate(3, countries);
     	}
 
     	function select_change_handler() {
     		formValues.country = select_value(this);
     		$$invalidate(2, formValues);
-    		$$invalidate(4, countries);
+    		$$invalidate(3, countries);
     	}
 
     	$$self.$capture_state = () => ({
     		Button,
+    		onMount,
+    		countries,
     		key,
     		State,
     		token,
     		state,
     		onSubmit,
     		doRecaptcha,
-    		countries,
     		formValues,
     		handleAnchorClick,
     		test
     	});
 
     	$$self.$inject_state = $$props => {
+    		if ('countries' in $$props) $$invalidate(3, countries = $$props.countries);
     		if ('State' in $$props) State = $$props.State;
     		if ('token' in $$props) $$invalidate(0, token = $$props.token);
     		if ('state' in $$props) $$invalidate(1, state = $$props.state);
-    		if ('countries' in $$props) $$invalidate(4, countries = $$props.countries);
     		if ('test' in $$props) $$invalidate(5, test = $$props.test);
     	};
 
@@ -1801,8 +1815,8 @@ var app = (function () {
     		token,
     		state,
     		formValues,
-    		onSubmit,
     		countries,
+    		onSubmit,
     		test,
     		input1_input_handler,
     		input2_input_handler,
