@@ -10,6 +10,8 @@
 		message: "",
 		country: ""
 	}
+    var w = window.innerWidth;
+    console.log(w)
 </script>
 
 <form action="https://api.staticforms.xyz/submit" method="post">
