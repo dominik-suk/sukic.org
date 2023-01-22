@@ -12,7 +12,7 @@
 
     </script>
 
-    <button class="custom-btn btn-3" on:click={toggle}><span><slot/></span></button>
+    <button class="custom-btn btn-3" on:click={toggle}><span>Darkmode</span></button>
     
     <style>
         .custom-btn {
