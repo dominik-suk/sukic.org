@@ -1,2 +1,2 @@
-This is a personal website /n
+This is a personal website:-
 Link: https://sukic.org/
