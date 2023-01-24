@@ -3,7 +3,7 @@
 </script>
 
 <ul class="top" style="position:unset;padding-top:1%;">
-    <li><img id="logo" href="../App.svelte" src="images/logo.png" alt="DSukic logo" width="115"></li>
+    <li><img id="logo" href="../App.svelte" src="./images/logo.png" alt="DSukic logo" width="115"></li>
     <li style="padding-left: 84%;padding-bottom:2%;"><Darkmode/></li>
 </ul>
 

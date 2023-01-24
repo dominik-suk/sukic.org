@@ -2,22 +2,23 @@
 	import Navbar from './components/Navbar.svelte';
     import Header from './components/Header.svelte';
     import Repeat from './components/Repeat.svelte';
+	import Projects from './components/Projects.svelte';
 	import Contact from './components/Contact.svelte';
 	import Footer from './components/Footer.svelte';
 </script>
 
 <main>
-	<Header />
-	<Navbar />
+	<Header/>
+	<Navbar/>
 
 	<Repeat>TEST</Repeat>
 	<h1 id="Design">Design</h1>
 	<Repeat>TEST</Repeat>
-	<h1 id="Projects">Projects</h1>
+	<Projects/>
 	<Repeat>TEST</Repeat>
 
-	<Contact />
-	<Footer />
+	<Contact/>
+	<Footer/>
 </main>
 
 

@@ -10,6 +10,7 @@
 		message: "",
 		country: ""
 	}
+
     var w = window.innerWidth;
     console.log(w)
 </script>
@@ -41,8 +42,6 @@
     <input type="text" name="honeypot" style="display: none;">
     <Recaptcha />
 </form>
-
-<Counter>You can send another message in</Counter>
 	
 <div>
     <pre>
