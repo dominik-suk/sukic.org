@@ -8,15 +8,9 @@
 </script>
 
 <main>
-<<<<<<< HEAD
 	<Header/>
 	<Navbar/>
 
-=======
-	<Header />
-	<Navbar />
-	<h1>HALLO</h1>
->>>>>>> 81157505d0a13fe15d039e0193ecd6c4b82c2e42
 	<Repeat>TEST</Repeat>
 	<h1 id="Design">Design</h1>
 	<Repeat>TEST</Repeat>
