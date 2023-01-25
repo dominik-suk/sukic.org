@@ -1,13 +1,31 @@
 <script>
-    let darkmode = false
+    import DarkmodeStore from "../stores/DarkmodeStore.js"
+
+    let darkmodeActive = false
+    let darkmodeValue = 0
+
+    DarkmodeStore.subscribe(data => {
+        darkmodeActive = data[0]      
+    });
+
     function toggle() {
-        darkmode = !darkmode
-        window.document.body.classList.toggle('dark-mode')
-        if (darkmode) {
+        darkmodeActive = !darkmodeActive
+        if (darkmodeActive) {
+            darkmodeValue = 5
             document.getElementById("logo").src="images/logo_darkmode.png";
         } else {
+            darkmodeValue = 0
             document.getElementById("logo").src="images/logo.png";
         }
+
+        DarkmodeStore.update(DarkmodeData => {
+            return [
+                darkmodeActive,
+                darkmodeValue
+            ]
+        })
+
+        window.document.body.classList.toggle('dark-mode')
     }
 
     </script>
@@ -73,7 +91,7 @@
             height: 2px;
         }
 
-        .btn-3:hover{
+        .btn-3:hover {
             background: transparent;
             box-shadow: none;
         }

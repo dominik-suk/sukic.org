@@ -1,5 +1,6 @@
 <script>
     import Counter from "../Counter.svelte"
+    import DarkmodeStore from "../../stores/DarkmodeStore.js"
 
     let player1 = true
     let player = "1"
@@ -21,6 +22,7 @@
             tiles[tile] = 2
         }
 
+        // handleDarkmode()
         checkWin()
         togglePlayer()
     }
@@ -95,23 +97,45 @@
             tiles[i] = 0
         }
     }
+
+    let sources = [
+        //Normal
+        "./images/TicTacToe/Empty.png",
+        "./images/TicTacToe/Cross.png",
+        "./images/TicTacToe/Circle.png",
+        "./images/TicTacToe/CrossWin.png",
+        "./images/TicTacToe/CircleWin.png",
+
+        //Darkmode
+        "./images/TicTacToe/Darkmode/EmptyDarkmode.png",
+        "./images/TicTacToe/Darkmode/CrossDarkmode.png",
+        "./images/TicTacToe/Darkmode/CircleDarkmode.png",
+        "./images/TicTacToe/Darkmode/CrossWinDarkmode.png",
+        "./images/TicTacToe/Darkmode/CircleWinDarkmode.png"
+    ]
+
+    let darkmodeValue = 0
+    
+    DarkmodeStore.subscribe(data => {
+        darkmodeValue = data[1]
+    });
 </script>
 
 
 <div class="board">
     {#each tiles as tile, index}
         {#if tile === 0}
-            <img id="{index}" class="eTile" src="./images/TicTacToe/Empty.png" alt="eTile" on:click={() => handleClick(index)} on:keydown={handleClick}>
+            <img id="{index}" class="eTile" src="{sources[tile + darkmodeValue]}" alt="eTile" on:click={() => handleClick(index)} on:keydown={handleClick}>
         {:else if tile === 1}
-            <img class="tile" src="./images/TicTacToe/Cross.png" alt="xTile">
+            <img class="tile" src="{sources[tile + darkmodeValue]}" alt="xTile">
         {:else if tile === 2}
-            <img class="tile" src="./images/TicTacToe/Circle.png" alt="oTile">
+            <img class="tile" src="{sources[tile + darkmodeValue]}" alt="oTile">
         {:else if tile === 3}
-            <img class="tile" src="./images/TicTacToe/CrossWin.png" alt="xWinTile">
+            <img class="tile" src="{sources[tile + darkmodeValue]}" alt="xWinTile">
         {:else if tile === 4}
-            <img class="tile" src="./images/TicTacToe/CircleWin.png" alt="oWinTile">
-        {:else}
-            <img class="tile" src="./images/TicTacToe/Empty.png" alt="eTile">
+            <img class="tile" src="{sources[tile + darkmodeValue]}" alt="oWinTile">
+        {:else if tile}
+            <img class="tile" src="{sources[tile + (darkmodeValue + 1)]}" alt="eTile">
         {/if}
     {/each}
 </div>
