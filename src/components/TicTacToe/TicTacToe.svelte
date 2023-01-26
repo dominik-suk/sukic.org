@@ -22,7 +22,6 @@
             tiles[tile] = 2
         }
 
-        // handleDarkmode()
         checkWin()
         togglePlayer()
     }
@@ -64,12 +63,18 @@
     }
 
     function allEqual(range) {
-        if(tiles[range[0]] === 0 || tiles[range[0]] === -1) {
-            return false
+        if(
+            tiles[range[0]] === 0 || 
+            tiles[range[0]] === -1
+            ) {
+                return false
         }
 
-        if(tiles[range[0]] === tiles[range[1]] && tiles[range[1]] === tiles[range[2]]) {
-            return true
+        if(
+            tiles[range[0]] === tiles[range[1]] &&
+            tiles[range[1]] === tiles[range[2]]
+            ) {
+                return true
         }
     }
 

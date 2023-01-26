@@ -1,11 +1,16 @@
 <script>
     import TicTacToe from "./TicTacToe/TicTacToe.svelte";
+    import Chess from "./Chess/Chess.svelte";
 </script>
 
 <h1 id="Projects">Projects</h1>
 <h1 class="title">Tic-Tac-Toe</h1>
 <h1 class="description">A simple Tic-Tac-Toe game made in Javascript</h1>
     <TicTacToe/>
+
+<h1 class="title">Tic-Tac-Toe</h1>
+<h1 class="description">A simple Tic-Tac-Toe game made in Javascript</h1>
+    <Chess/>
 
 <style>
     h1 {

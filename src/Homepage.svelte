@@ -8,10 +8,8 @@
 </script>
 
 <main>
-	<div class="header">
-		<Header/>
-		<Navbar/>
-	</div>
+	<Header/>
+	<Navbar/>
 
 	<Repeat>TEST</Repeat>
 	<h1 id="Design">Design</h1>
@@ -25,11 +23,6 @@
 
 
 <style>
-	.header {
-		top: 0;
-		position: sticky;
-	}
-
 	:global(body) {
 		background-color: white;
 		color: #161616;
