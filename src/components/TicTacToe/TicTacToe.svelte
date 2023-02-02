@@ -1,21 +1,25 @@
 <script>
-    import Counter from "../Counter.svelte"
     import DarkmodeStore from "../../stores/DarkmodeStore.js"
+    import Counter from "../Counter.svelte"
+    import Tile from "./Tile.svelte"
 
     let player1 = true
     let player = "1"
     let playerWon = "2"
     let won = false
+    let draw = false
+    let clickable = true
 
     let restartSeconds = 5
 
-    let tiles = [
-        0, 0, 0,
-        0, 0, 0,
-        0, 0, 0
-    ]
+    let tiles = []
+    for(let i = 0; i < 9; i++) {
+        tiles.push(0)
+    }
 
-    function handleClick(tile) {
+    let handleClick = (tile) => {
+        if(tiles[tile] != 0) {return}
+
         if(player1) {
             tiles[tile] = 1
         } else {
@@ -23,6 +27,7 @@
         }
 
         checkWin()
+        checkDraw()
         togglePlayer()
     }
 
@@ -62,18 +67,24 @@
         }
     }
 
+    function checkDraw() {
+        for(let i = 0; i < tiles.length; i++) {
+            if(tiles[i] === 0) {
+                return
+            }
+        }
+
+        draw = true
+        clickable = false
+        setTimeout(restart, restartSeconds * 1000)
+    }
+    
     function allEqual(range) {
-        if(
-            tiles[range[0]] === 0 || 
-            tiles[range[0]] === -1
-            ) {
+        if(tiles[range[0]] === 0 || tiles[range[0]] === -1) {
                 return false
         }
 
-        if(
-            tiles[range[0]] === tiles[range[1]] &&
-            tiles[range[1]] === tiles[range[2]]
-            ) {
+        if(tiles[range[0]] === tiles[range[1]] && tiles[range[1]] === tiles[range[2]]) {
                 return true
         }
     }
@@ -84,19 +95,16 @@
             tiles[range[i]] += 2
         }
 
-        for(let j = 0; j < tiles.length; j++) {
-            if(tiles[j] === 0) {
-                tiles[j] = -1
-            }
-        }
-
+        clickable = false
         setTimeout(restart, restartSeconds * 1000)
     }
 
     function restart() {
+        clickable = true
         player1 = true
         player = "1"
         won = false
+        draw = false
 
         for(let i = 0; i < tiles.length; i++) {
             tiles[i] = 0
@@ -129,19 +137,12 @@
 
 <div class="board">
     {#each tiles as tile, index}
-        {#if tile === 0}
-            <img id="{index}" class="eTile" src="{sources[tile + darkmodeValue]}" alt="eTile" on:click={() => handleClick(index)} on:keydown={handleClick}>
-        {:else if tile === 1}
-            <img class="tile" src="{sources[tile + darkmodeValue]}" alt="xTile">
-        {:else if tile === 2}
-            <img class="tile" src="{sources[tile + darkmodeValue]}" alt="oTile">
-        {:else if tile === 3}
-            <img class="tile" src="{sources[tile + darkmodeValue]}" alt="xWinTile">
-        {:else if tile === 4}
-            <img class="tile" src="{sources[tile + darkmodeValue]}" alt="oWinTile">
-        {:else if tile}
-            <img class="tile" src="{sources[tile + (darkmodeValue + 1)]}" alt="eTile">
-        {/if}
+        <Tile
+            handleClick="{handleClick}"
+            clickable="{clickable}"
+            index="{index}"
+            currentSource="{sources[tile + darkmodeValue]}"
+        />
     {/each}
 </div>
 <div class="score">
@@ -153,6 +154,14 @@
             />
         </div>
         <h1>Restart...</h1>
+    {:else if draw}
+        <h1>It's a draw</h1>
+        <div class="counter">
+            <Counter
+                initial={restartSeconds}
+            />
+        </div>
+        <h1>Restart...</h1> 
     {:else}
         <h1>It's player {player}'s turn</h1>
     {/if}
@@ -166,14 +175,6 @@
         grid-template-columns: repeat(3, 170px);
         grid-template-rows: repeat(3, 170px);
         margin-left: 20%;
-    }
-
-    .tile, .eTile{
-        display: inline-grid;
-    }
-
-    .eTile:hover {
-        cursor: pointer;
     }
 
     .score {
